@@ -1,0 +1,35 @@
+Squish - third-party software notices
+=====================================
+
+Squish is licensed under the GNU General Public License v3.0 or later (see LICENSE).
+It includes or uses the following software.
+
+FFmpeg 9.0.2 (ffmpeg.exe, ffprobe.exe)
+--------------------------------------
+Build: 9.0.2-essentials_build-www.gyan.dev, static, unmodified, from https://www.gyan.dev/ffmpeg/builds/
+Licence: GNU General Public License v3 (the build enables GPL and version 3 components, including libx264
+and libx265). The full licence text is in ffmpeg\LICENSE.txt.
+Source code: https://github.com/FFmpeg/FFmpeg/commit/946fcce07b
+Build configuration and component versions: ffmpeg\BUILD-README.txt.
+Squish runs FFmpeg as a separate program and does not link to it.
+
+Patent notice: H.264, HEVC and AAC are patent-encumbered formats. This build is provided for personal use.
+
+Magick.NET 15.1.0 (Magick.NET-Q8-AnyCPU) and ImageMagick
+---------------------------------------------------------
+Licence: Apache License 2.0. https://github.com/dlemstra/Magick.NET/blob/main/License.txt
+ImageMagick licence: https://imagemagick.org/script/license.php
+Bundled delegate libraries (libjpeg-turbo, libpng, libwebp, libheif, libde265, libaom/dav1d, libraw, libtiff,
+lcms2, zlib and others) carry their own permissive licences, listed in the Magick.NET package notices.
+
+Windows App SDK 2.6.5 and WinUI 3
+---------------------------------
+Licence: MIT. https://github.com/microsoft/WindowsAppSDK/blob/main/LICENSE
+
+.NET 10 runtime (self-contained)
+--------------------------------
+Licence: MIT. https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
+
+CommunityToolkit.Mvvm 8.4.2
+---------------------------
+Licence: MIT. https://github.com/CommunityToolkit/dotnet/blob/main/License.md

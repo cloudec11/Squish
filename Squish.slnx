@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/bench/">
+    <Project Path="bench/Squish.Bench/Squish.Bench.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Squish.App/Squish.App.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="src/Squish.Cli/Squish.Cli.csproj" />
+    <Project Path="src/Squish.Core/Squish.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Squish.Core.Tests/Squish.Core.Tests.csproj" />
+  </Folder>
+</Solution>

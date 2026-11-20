@@ -1,0 +1,9 @@
+bin/
+obj/
+*.user
+.vs/
+corpus/
+bench-results/
+artifacts/
+tools/ffmpeg/*.exe
+TestResults/
