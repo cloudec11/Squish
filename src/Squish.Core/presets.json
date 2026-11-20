@@ -1,0 +1,13 @@
+{
+  "bytesPerMegabyte": 1000000,
+  "defaultPresetId": "free",
+  "presets": [
+    { "id": "safe",    "label": "10",  "megabytes": 10,  "caption": "Safe for older clients" },
+    { "id": "free",    "label": "20",  "megabytes": 20,  "caption": "Free limit" },
+    { "id": "basic",   "label": "50",  "megabytes": 50,  "caption": "Nitro Basic" },
+    { "id": "boosted", "label": "100", "megabytes": 100, "caption": "Level 3 boosted server" },
+    { "id": "nitro",   "label": "500", "megabytes": 500, "caption": "Nitro" }
+  ],
+  "customMinMegabytes": 1,
+  "customMaxMegabytes": 2000
+}
