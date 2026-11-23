@@ -16,6 +16,7 @@ into Discord. Results are saved beside the originals as `<name>_discord.<ext>`.
 | `tests/Squish.Core.Tests` | xUnit tests for planners, verifier, probe parsing, sniffing, presets |
 | `bench/Squish.Bench` | Runs the corpus at 10/20/50 MB; reports size accuracy, VMAF/SSIM, speed |
 | `scripts/` | FFmpeg fetch, corpus generator, publish, installer, icon |
+| `web/` | Phone/browser version: same planner, runs on the device with WebCodecs. See `web/README.md` |
 | `docs/decisions.md` | Every Verify item from the plan and its result |
 | `docs/verification.md` | What was measured for the acceptance criteria, and what wasn't |
 
