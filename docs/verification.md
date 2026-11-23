@@ -61,9 +61,47 @@ All MP4 outputs have `moov` before `mdat` (faststart).
 Fast mode (AMD AMF): 92.1–93.8% before the threshold change, 93.0–94.0% after; 6–25 s per file versus 30–90 s
 for Best.
 
-## Bench (full corpus × 10/20/50 MB)
+## Bench (full corpus × 10/20/50 MB, Best mode, 2026-11-23)
 
-See the newest `bench-results\<timestamp>\report.txt`. Summary is filled in below once the run finishes.
+Run `20261123-151334`: 28 corpus files × 3 targets = 84 runs, about 50 minutes on the dev machine.
+
+| Criterion (plan section 13) | Result |
+| --- | --- |
+| 100% of outputs at or under the target | **Pass**: 0 of 75 outputs over |
+| Compressed videos at 93–99.5% of target | **Pass**: 41 of 41, range 94.98–97.86% |
+| Hostile files fail cleanly, queue continues | **Pass**: zero-byte → "The file is empty"; text renamed .mp4 and truncated MP4 → "This isn't a video or image Squish can read…" (9 expected failures) |
+| ffprobe reads every output | **Pass** (the verifier checks every output before accepting it) |
+| VMAF per video file | Reported; mean 91.8 |
+| SSIM per image | Reported; mean 0.92 |
+
+Per-file highlights:
+
+| File | 10 MB | 20 MB | 50 MB |
+| --- | --- | --- | --- |
+| 4K phone clip, 15 s | 97.6%, 1440p, VMAF 94.5 | 97.2%, 1440p, 96.1 | 95.9%, 2160p, 93.3 |
+| 1080p60 game capture, 60 s | 97.2%, VMAF 97.6 | 96.7%, 96.8 | 96.6%, 91.7 |
+| Vertical clip with rotation metadata | 95.9%, 90.5 | 96.6%, 93.4 | 95.0%, 95.8 |
+| VFR screen capture | 96.2%, 92.1 | 96.0%, 93.7 | 95.4%, 95.4 |
+| 2 s clip | 96.9% (1 retry) | 97.9% (1 retry) | already fits |
+| Animated WebP | 86.1%, VMAF 53.6, 86 s | 85.7%, 96.4 | 71.3%, 97.0 |
+| High-colour GIF | 82.3%, VMAF 58.0 | 83.2%, 98.0 | 88.2%, 98.0 |
+| 24 MP JPEG | 74.4%, SSIM 0.81 | 92.5%, 0.96 | already fits |
+| 7000×5000 TIFF | 77.9%, SSIM 0.80 | 89.1%, 0.90 | 57.2%, 0.96 |
+
+Reading the scores:
+
+- **HDR (VMAF ~75) and interlaced (~71–78) scores are not quality problems.** VMAF compares the output against
+  the source frames, and those sources are a PQ HDR picture and woven interlaced fields, which the output
+  intentionally converts (tone-mapped to SDR, deinterlaced). The metric penalises the conversion itself.
+- VMAF is measured at each output's own resolution, so scores aren't comparable across targets for one file.
+- Images often use well under the target because quality is capped at 95; once the best quality fits, Squish
+  stops instead of padding the file.
+- The synthetic test images are mostly random noise, the hardest possible content, so the 10 MB SSIM of ~0.80 is
+  a floor rather than typical.
+- GIFs at 10 MB score low (VMAF 54–58) because they had to shrink heavily; the app suggests "Convert to video".
+
+Not done from the plan: the **tuning sweep** (sweeping each starting value for best mean VMAF at 20 MB and
+recording it in `docs/tuning.md`). These results are the baseline that sweep would compare against.
 
 ## Not verified
 
