@@ -33,3 +33,15 @@ using (var col = new MagickImageCollection())
 using (var png = Render(32)) png.Write(Path.Combine(outDir, "Squish-32.png"));
 using (var png = Render(256)) png.Write(Path.Combine(outDir, "Squish-256.png"));
 Console.WriteLine($"Icons written to {Path.GetFullPath(outDir)}");
+
+// Optional second folder: web app icons (PWA manifest and iOS home screen).
+if (args.Length > 1)
+{
+    var webDir = args[1];
+    Directory.CreateDirectory(webDir);
+    using (var p = Render(192)) p.Write(Path.Combine(webDir, "icon-192.png"));
+    using (var p = Render(512)) p.Write(Path.Combine(webDir, "icon-512.png"));
+    // iOS ignores transparency on home screen icons; give it a full square tile.
+    using (var p = Render(180)) { p.BackgroundColor = new MagickColor("#5B5BD6"); p.Alpha(AlphaAction.Remove); p.Write(Path.Combine(webDir, "apple-touch-icon.png")); }
+    Console.WriteLine($"Web icons written to {Path.GetFullPath(webDir)}");
+}
