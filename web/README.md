@@ -33,7 +33,14 @@ npm run build      # dist/; set BASE_PATH=/Squish/ for a GitHub Pages project si
 
 ## Deploy
 
-- **GitHub Pages:** `.github/workflows/pages.yml` builds and deploys on every push to `main` that touches `web/`.
-  Enable it once under the repo's Settings → Pages → Source: GitHub Actions. Pages on a private repo needs a
-  paid GitHub plan.
-- **Vercel:** import the GitHub repo, set **Root Directory** to `web`. `vercel.json` has the build settings.
+Live at **https://squish.select** (also `www.squish.select` and `squish-ruby.vercel.app`).
+
+- **Vercel (in use):** project `squish`, connected to `cloudec11/Squish`, Root Directory `web`, production
+  branch `main`. Every push to `main` that changes `web/` builds and publishes; other pushes are skipped
+  (ignore command `git diff --quiet HEAD^ HEAD ./`). Build settings are in `vercel.json`.
+  Deploy by pushing; a manual `vercel deploy` from this folder no longer works now that the project's root is
+  `web`, and running it from the repo root would upload the local test corpus.
+- **Domain:** registered at Porkbun, using Porkbun's nameservers. DNS: two `A` records for `@`
+  (`216.198.79.1`, `64.29.17.1`) and a `CNAME` for `www` pointing at Vercel. Vercel issues the HTTPS certificate.
+- **GitHub Pages (not in use):** `.github/workflows/pages.yml` can still build and publish to Pages, but only runs
+  when started by hand. Pages on a private repo needs a paid GitHub plan.
