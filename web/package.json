@@ -1,0 +1,28 @@
+{
+  "name": "squish-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Squish in the browser: shrink videos, images and GIFs to fit Discord, on your phone. Runs entirely on the device.",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@mediabunny/aac-encoder": "^1.66.2",
+    "gifenc": "^1.0.3",
+    "mediabunny": "^1.66.2",
+    "preact": "^11.2.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.1"
+  }
+}
