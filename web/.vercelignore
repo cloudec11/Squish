@@ -1,0 +1,5 @@
+# Local-only files the Vercel CLI must not upload (it builds from source).
+fixtures
+node_modules
+dist
+.env*

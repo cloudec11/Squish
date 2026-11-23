@@ -3,10 +3,9 @@
 # Note: GitHub Pages on a private repository needs a paid plan (Pro, Team or Enterprise).
 name: Deploy web app to GitHub Pages
 
+# Manual only: the site is hosted on Vercel. To use Pages instead, restore the push trigger:
+#   push: { branches: [main], paths: ['web/**', '.github/workflows/pages.yml'] }
 on:
-  push:
-    branches: [main]
-    paths: ['web/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:
